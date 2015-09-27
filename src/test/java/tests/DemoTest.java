@@ -1,4 +1,4 @@
-package Tests;
+package tests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class FirstTest  {
+public class DemoTest {
 
     @Test
     public void test() {
