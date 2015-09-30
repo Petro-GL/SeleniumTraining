@@ -7,7 +7,9 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
@@ -33,22 +35,15 @@ public class Driver {
 
     }
 
-    public void waitForPageLoaded(WebDriver driver) {
+    public void waitForPageLoaded() {
 
-        ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver driver) {
-                return ((JavascriptExecutor) driver).executeScript(
-                        "return document.readyState").equals("complete");
-            }
-        };
-
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+      //TODO Implement
         try {
-            wait.until(expectation);
-        } catch (Throwable error) {
-            Assert.assertFalse(true,
-                    "Timeout waiting for Page Load Request to complete.");
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
+
     }
 
 

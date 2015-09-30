@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import webdriver.Driver;
 
@@ -8,13 +9,38 @@ import webdriver.Driver;
  */
 public class HomePage extends Driver {
 
-    private String LOGIN_PAGE_URL = "https://www.ukr.net/";
+    private String loginPageUrl = "https://www.ukr.net/";
+    private String loginField = "Login";
+    private String passwordField = "Password";
+    private String username = "username";
+    private String logout = "logout";
 
-    public void Login (String email, String password){
-        driver.get(LOGIN_PAGE_URL);
+    public void logout() {
+
+        driver.get(loginPageUrl);
+        driver.findElement(By.className(logout)).click();
+        waitForPageLoaded();
+        Assert.assertTrue(driver.findElement(By.name(loginField)).isDisplayed());
+
+    }
+
+    public void login(String email, String password){
 
 
-        Assert.assertTrue(driver.getCurrentUrl().equals(LOGIN_PAGE_URL));
+        driver.get(loginPageUrl);
+        driver.findElement(By.name(loginField)).sendKeys(email);
+        driver.findElement(By.name(passwordField)).sendKeys(password);
+        driver.findElement(By.name(passwordField)).submit();
+        waitForPageLoaded();
+
+        Assert.assertEquals(driver.findElement(By.className(username)).getText(), email);
+
+    }
+
+   public boolean isLoggedIn (){
+       driver.get(loginPageUrl);
+       boolean logedIn = driver.findElement(By.className(username)).isDisplayed();
+       return logedIn;
 
     }
 
