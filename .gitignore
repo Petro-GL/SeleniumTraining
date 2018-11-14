@@ -3,7 +3,7 @@ Thumbs.db
 ehthumbs.db
 
 # Just to make life harder
-*.txt
+src/*.txt
 
 # Folder config file
 Desktop.ini
